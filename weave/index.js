@@ -25,18 +25,18 @@
 const Queue = require('./queue');
 
 function weave(sourceOne, sourceTwo) {
-  result = new Queue
+  const q = new Queue()
 
   while (sourceOne.peek() || sourceTwo.peek()) {
     if (sourceOne.peek()) {
-      result.add(sourceOne.remove())
+      q.add(sourceOne.remove())
     }
 
     if (sourceTwo.peek()) {
-      result.add(sourceTwo.remove())
+      q.add(sourceTwo.remove())
     }
   }
-  return result
+  return q
 }
 
 // MINE
@@ -45,16 +45,30 @@ function weave(sourceOne, sourceTwo) {
 //
 //   while (sourceOne.peek() || sourceTwo.peek()) {
 //     if (sourceOne.peek()) {
-//       result.add(sourceOne.peek())
-//       sourceOne.remove()
+//       result.add(sourceOne.remove())
 //     }
 //
 //     if (sourceTwo.peek()) {
-//       result.add(sourceTwo.peek())
-//       sourceTwo.remove()
+//       result.add(sourceTwo.remove())
 //     }
 //   }
 //   return result
+// }
+
+// THEIRS
+// function weave(sourceOne, sourceTwo) {
+//   const q = new Queue()
+//
+//   while (sourceOne.peek() || sourceTwo.peek()) {
+//     if (sourceOne.peek()) {
+//       q.add(sourceOne.remove())
+//     }
+//
+//     if (sourceTwo.peek()) {
+//       q.add(sourceTwo.remove())
+//     }
+//   }
+//   return q
 // }
 
 module.exports = weave;
