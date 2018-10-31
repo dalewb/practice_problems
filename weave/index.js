@@ -29,16 +29,32 @@ function weave(sourceOne, sourceTwo) {
 
   while (sourceOne.peek() || sourceTwo.peek()) {
     if (sourceOne.peek()) {
-      result.add(sourceOne.peek())
-      sourceOne.remove()
+      result.add(sourceOne.remove())
     }
 
     if (sourceTwo.peek()) {
-      result.add(sourceTwo.peek())
-      sourceTwo.remove()
+      result.add(sourceTwo.remove())
     }
   }
   return result
 }
+
+// MINE
+// function weave(sourceOne, sourceTwo) {
+//   result = new Queue
+//
+//   while (sourceOne.peek() || sourceTwo.peek()) {
+//     if (sourceOne.peek()) {
+//       result.add(sourceOne.peek())
+//       sourceOne.remove()
+//     }
+//
+//     if (sourceTwo.peek()) {
+//       result.add(sourceTwo.peek())
+//       sourceTwo.remove()
+//     }
+//   }
+//   return result
+// }
 
 module.exports = weave;
