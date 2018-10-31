@@ -8,6 +8,34 @@
 // Example:
 //   fib(4) === 3
 
-function fib(n) {}
+function fibArray(n) {
+  let result = [0,1,1]
+  index = 0
+
+  if (n === 0) {
+    return [0]
+  } else if (n === 1) {
+    return [0,1]
+  } else if (n === 2) {
+    return result
+  }
+
+  for (let i=2; i<n; i++) {
+    result.push(result[i-1] + result[i])
+  }
+
+  return result[result.length - 1]
+}
 
 module.exports = fib;
+
+// MINE (RECURSIVE)
+// function fib(n) {
+//   if (n === 0) {
+//     return 0
+//   } else if (n <= 2) {
+//     return 1
+//   }
+//
+//   return fib(n-1) + fib (n-2)
+// }
