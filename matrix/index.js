@@ -16,7 +16,6 @@
 //     [10,  9,  8, 7]]
 
 function matrix(n) {
-  // create results array
   let results = []
   let count = 1
   let startColumn = 0
