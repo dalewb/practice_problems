@@ -133,6 +133,10 @@ class LinkedList {
   }
 
   insertLast(data) {
+    if (!this.head) {
+      this.head = new Node(data)
+      return
+    }
     let node = this.head
     while (node.next) {
       node = node.next
@@ -141,7 +145,13 @@ class LinkedList {
   }
 
   getAt(index, nodeToGet) {
-
+    let count = 0
+    let node = this.head
+    while (count !== index && node) {
+      count++
+      node = node.next
+    }
+    return node
   }
 }
 
