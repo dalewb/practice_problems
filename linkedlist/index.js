@@ -252,6 +252,7 @@ class LinkedList {
   //   }
   // }
 
+// Theirs
   removeAt(index) {
     if (!this.head) {
       return;
@@ -263,11 +264,39 @@ class LinkedList {
     }
 
     const previous = this.getAt(index - 1);
-    if (previous.next) {
-      previous.next = previous.next.next
+    if (!previous || !previous.next) {
       return
     }
-    return null
+    previous.next = previous.next.next
+  }
+// Mine (was a little tough)
+      // Remember that some functions will return null and null can be used as values
+  // insertAt(data, index) {
+  //   if (!this.head) {
+  //     this.head = new Node(data)
+  //     return
+  //   }
+  //
+  //   if (index === 0) {
+  //     this.head = new Node(data, this.head)
+  //     return
+  //   }
+  //
+  //   let prevNode = this.getAt(index - 1)
+  //   if (prevNode) {
+  //     prevNode.next = new Node(data, prevNode.next)
+  //     return
+  //   }
+  //
+  //   this.getLast().next = new Node(data)
+  // }
+
+// Theirs
+  insertAt(data, index) {
+    if (!this.head) {
+      this.head = new Node(data)
+      return 
+    }
   }
 
 }
