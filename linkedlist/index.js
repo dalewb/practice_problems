@@ -97,18 +97,43 @@ class LinkedList {
   //   this.head = this.head.next;
   // }
 
+// Mine
+  // removeLast() {
+  //   if (this.size() <= 1) {
+  //     this.clear()
+  //   } else {
+  //     let currentNode = this.head
+  //     let prevNode = null
+  //     while (currentNode.next) {
+  //       prevNode = currentNode
+  //       currentNode = currentNode.next
+  //     }
+  //     prevNode.next = null
+  //   }
+  // }
+
+// Theirs
   removeLast() {
-    if (this.size() <= 1) {
-      this.clear()
-    } else {
-      let currentNode = this.head
-      let prevNode = null
-      while (currentNode.next) {
-        prevNode = currentNode
-        currentNode = currentNode.next
-      }
-      prevNode.next = null
+    if (!this.head) {
+      return;
     }
+
+    if (!this.head.next) {
+      this.head = null;
+      return;
+    }
+
+    let previous = this.head;
+    let node = this.head.next;
+    while (node.next) {
+      previous = node;
+      node = node.next;
+    }
+    previous.next = null;
+  }
+
+  insertLast(data) {
+    let node
   }
 }
 
