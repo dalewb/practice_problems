@@ -2,6 +2,13 @@
 // Implement classes Node and Linked Lists
 // See 'directions' document
 
+// For some methods, such as getFirst, getLast etc where we
+// are trying to access elements int he beginning or end, we
+// could instead use getAt or insertAt and pass in the index of
+// 0 for the first element or use the conditional logic built
+// into the ...At() functions for the end.  Mentioning this in
+// an interview would look great!
+
 class Node {
   constructor(data, nextNode = null) {
     this.data = data;
@@ -294,8 +301,29 @@ class LinkedList {
 // Theirs
   insertAt(data, index) {
     if (!this.head) {
-      this.head = new Node(data)
-      return 
+      this.head = new Node(data);
+      return;
+    }
+
+    if (index === 0) {
+      this.head = new Node(data, this.head);
+      return;
+    }
+
+    const previous = this.getAt(index-1) || this.getLast();
+    const node = new Node(data, previous.next);
+    previous.next = node;
+  }
+
+  forEach(fn) {
+    if (!this.head) {
+      return
+    }
+
+    let node = this.head
+    while (node) {
+      fn(node)
+      node = node.next
     }
   }
 
