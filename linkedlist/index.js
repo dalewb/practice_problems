@@ -315,18 +315,38 @@ class LinkedList {
     previous.next = node;
   }
 
-  forEach(fn) {
-    if (!this.head) {
-      return
-    }
+// Mine
+  // forEach(fn) {
+  //   if (!this.head) {
+  //     return
+  //   }
+  //
+  //   let node = this.head
+  //   while (node) {
+  //     fn(node)
+  //     node = node.next
+  //   }
+  // }
 
-    let node = this.head
+// Theirs (used counter bc forEach does take an optional index value)
+  forEach(fn) {
+    let node = this.head;
+    let counter = 0;
     while (node) {
-      fn(node)
-      node = node.next
+      fn(node, counter);
+      node = node.next;
+      counter++;
     }
   }
 
+// Theirs (I don't fully understand what is happening here)
+  *[Symbol.iterator]() {
+    let node = this.head
+    while (node) {
+      yield node;
+      node = node.next;
+    }
+  }
 }
 
 module.exports = { Node, LinkedList };
