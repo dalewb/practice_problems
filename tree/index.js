@@ -33,7 +33,15 @@ class Tree {
     this.root = null
   }
 
-  
+  traverseBF(fn) {
+    const arr = [this.root];
+    while (arr.length) {
+      const node = arr.shift();
+
+      arr.push(...node.children);
+      fn(node);
+    }
+  }
 
 }
 
@@ -79,6 +87,20 @@ module.exports = { Tree, Node };
 //       this.traverseBF(fn, node.children[j])
 //     }
 //   }
+//
+// Mine (second attempt)
+  // traverseBF(fn) {
+  //   let array = [this.root]
+  //   while (array.length > 0) {
+  //     let temp = array.shift()
+  //     fn(temp)
+  //     if (temp.children.length > 0) {
+  //       temp.children.forEach(node => {
+  //         array.push(node)
+  //       })
+  //     }
+  //   }
+  // }
 //
 //   traverseDF(fn, root = this.root) {
 //     fn(root)
