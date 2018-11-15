@@ -33,29 +33,7 @@ class Tree {
     this.root = null
   }
 
-  traverseBF(fn, node = this.root, root = this.root) {
-    if (node === root) {
-      fn(root)
-    }
-
-    for (let i=0; i<node.children.length; i++) {
-      fn(node.children[i])
-    }
-
-    if (node.children.length > 0) {
-      for (let j=0; j<root.children.length; j++) {
-        this.traverseBF(fn, root.children[j], this.root)
-      }
-    }
-  }
-
-  traverseDF(fn, root = this.root) {
-    fn(root)
-
-    for (let j=0; j<root.children.length; j++) {
-      this.traverseDF(fn, root.children[j])
-    }
-  }
+  
 
 }
 
@@ -76,4 +54,38 @@ module.exports = { Tree, Node };
 //   remove(nodeToRemove) {
 //     this.children = this.children.filter(node => node.data !== nodeToRemove)
 //   }
+// }
+
+// Mine
+// class Tree {
+//   constructor() {
+//     this.root = null
+//   }
+//
+//   traverseBF(fn, node = this.root) {
+//     if (node === this.root) {
+//       fn(node)
+//     }
+//
+//     if (node.children.length === 0) {
+//       return
+//     }
+//
+//     for (let i=0; i<node.children.length; i++) {
+//       fn(node.children[i])
+//     }
+//
+//     for (let j=0; j<node.children.length; j++) {
+//       this.traverseBF(fn, node.children[j])
+//     }
+//   }
+//
+//   traverseDF(fn, root = this.root) {
+//     fn(root)
+//
+//     for (let j=0; j<root.children.length; j++) {
+//       this.traverseDF(fn, root.children[j])
+//     }
+//   }
+//
 // }
