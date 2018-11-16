@@ -33,6 +33,7 @@ class Tree {
     this.root = null
   }
 
+// Theirs
   traverseBF(fn) {
     const arr = [this.root];
     while (arr.length) {
@@ -43,6 +44,15 @@ class Tree {
     }
   }
 
+  traverseDF(fn) {
+    const arr = [this.root];
+    while (arr.length) {
+      const node = arr.shift();
+
+      arr.unshift(...node.children);
+      fn(node);
+    }
+  }
 }
 
 module.exports = { Tree, Node };
@@ -89,25 +99,35 @@ module.exports = { Tree, Node };
 //   }
 //
 // Mine (second attempt)
-  // traverseBF(fn) {
-  //   let array = [this.root]
-  //   while (array.length > 0) {
-  //     let temp = array.shift()
-  //     fn(temp)
-  //     if (temp.children.length > 0) {
-  //       temp.children.forEach(node => {
-  //         array.push(node)
-  //       })
-  //     }
-  //   }
-  // }
-//
-//   traverseDF(fn, root = this.root) {
-//     fn(root)
-//
-//     for (let j=0; j<root.children.length; j++) {
-//       this.traverseDF(fn, root.children[j])
+// traverseBF(fn) {
+//   let array = [this.root]
+//   while (array.length > 0) {
+//     let temp = array.shift()
+//     fn(temp)
+//     if (temp.children.length > 0) {
+//       temp.children.forEach(node => {
+//         array.push(node)
+//       })
 //     }
 //   }
+// }
 //
+// traverseDF(fn, root = this.root) {
+//   fn(root)
+//
+//   for (let j=0; j<root.children.length; j++) {
+//     this.traverseDF(fn, root.children[j])
+//   }
+// }
+//
+// Mine (second attempt)
+// traverseDF(fn) {
+//   const arr = [this.root]
+//   while (arr.length) {
+//     const node = arr.shift()
+//
+//     arr.unshift(...node.children)
+//     fn(node)
+//   }
+// }
 // }
