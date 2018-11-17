@@ -10,7 +10,50 @@
 // |       |
 // 4       5
 // Answer: [1, 3, 2]
+// Theirs (I don't like the 'counters.length-1' to determine
+//position since it requires an iteration each time it is called)
+function levelWidth(root) {
+  const arr = [root, 's'];
+  const counters = [0];
 
-function levelWidth(root) {}
+  while (arr.length > 1) {
+    const node = arr.shift()
+    if (node === 's') {
+      counters.push(0);
+      arr.push('s');
+    } else {
+      arr.push(...node.children);
+      counters[counters.length - 1]++;
+    }
+  }
+
+  return counters
+}
 
 module.exports = levelWidth;
+
+// Mine
+// function levelWidth(root) {
+//   let counters = []
+//   let arr = [root,'s']
+//   let count = 0
+//   while (arr.length) {
+//
+//     if (arr.length === 1) {
+//       counters.push(count)
+//       return counters
+//     }
+//
+//     const node = arr.shift()
+//
+//     if (node === 's') {
+//       counters.push(count)
+//       count = 0
+//       arr.push('s')
+//     } else {
+//       count ++
+//       arr.push(...node.children)
+//     }
+//
+//   }
+// }
